@@ -20,4 +20,13 @@ body {
 .img-medium {
     height: 300px;
 }
-
+.container{
+                   font-family: sans-sarif;
+                    color: blueviolet;
+                    max-width: 800px;
+                    margin: 0 auto;
+                
+                    padding-top: 10;
+                    padding-left: 10px;
+                    padding-right: 10px
+           }
