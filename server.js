@@ -65,7 +65,7 @@ function CreateTemplate(data){
             </div>
             
             <div>
-                <a  href="/article-one">Article One</a>
+                <a  href="/article-two">Article two</a>
             </div>
        <hr/>
        
