@@ -6,7 +6,7 @@ element.innerHTML='new value';
 
 var img=document.getElementById('image');
 var marginLeft=0;
-function movrright (){
+function moveright (){
     marginLeft=marginLeft+10;
     img.style.marginLeft=marginLeft+'px';
 }
