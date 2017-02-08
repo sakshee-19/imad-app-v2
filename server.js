@@ -22,7 +22,7 @@ var articles={
     },
      'article-two': {
         title:'Article Two |sakshee jain',
-        date:'19,july',
+        date:'18,july',
         heading:'Article two',
         content:` <p>
                 This is my aricle two  This is my aricle two  This is my aricle two
@@ -36,7 +36,7 @@ var articles={
     },
     'article-three': {
         title:'Article Three |sakshee jain',
-        date:'19,july',
+        date:'17,july',
         heading:'Article Three',
         content:` <p>
                 this is article three !!!!!!!!!!!!!!!!!!!!!!!!
@@ -73,12 +73,15 @@ function CreateTemplate(data){
            <h3>
                ${heading}
            </h3>
+           
            <div>
                ${date}
            </div>
+           
            <div>
               ${content}
            </div>
+       
        </div>
        </body>
     </html>`;
