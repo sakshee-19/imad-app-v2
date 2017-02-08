@@ -93,6 +93,10 @@ app.get('/:articlename', function (req, res) {
   res.send(CreateTemplate(articles[articlename]));
 });
 
+app.get('/main.js', function (req, res) {
+     res.sendFile(path.join(_dirname,'ui','main.js'));
+});
+
 
 
 
