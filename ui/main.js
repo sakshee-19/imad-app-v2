@@ -5,6 +5,12 @@ element.innerHTML='new value';
 //move image
 
 var img=document.getElementById('image');
+function movrright (){
+    marginLeft=marginLeft+10;
+    img.style.marginLeft=marginLeft;
+}
+
 img.onclick = function (){
-    img.style.marginLeft='100px';
+    var interval=set.interval(moveright,100);
+    
 };
