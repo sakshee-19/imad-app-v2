@@ -20,9 +20,9 @@ img.onclick = function (){
 
 var counter=0;
 var button=document.getElementById('button');
-button.onclick = function(){
 
+button.onclick = function(){
 counter=counter+1;
 var span=document.getElementById('counts');
 span.innerHTML=counter.toString();
-} ;
+};
