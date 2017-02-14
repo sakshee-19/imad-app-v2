@@ -50,14 +50,25 @@ var submit=document.getElementById('submit_btn');
 submit.onclick = function(){
   
   //make request to the server send the name
-  
-  
-  //capture the list and update
-  var names=['name1', 'name2', 'name3', 'name4'];
-  var list='';
-  for(var i=0; i<names.length ; i++){
-      list += '<li>'+names[i]+'</li>';
-  }
-  var ul=document.getElementById('namelist');
-  ul.innerHTML=list;
+   var request=new XMLHttpRequest();
+
+    request.onreadystatechange=function(){
+        if(request.readyState===XMLHttpRequest.DONE)
+        {
+            //do some actions
+              if(request.status===200)
+                {
+                        //capture the list and update
+                      var names=request.responseText;
+                      var list='';
+                      for(var i=0; i<names.length ; i++){
+                          list += '<li>'+names[i]+'</li>';
+                      }
+                      var ul=document.getElementById('namelist');
+                      ul.innerHTML=list; 
+                }
+        }
+     };
+    request.open('GET','http://sakshee-19.imad.hasura-app.io/submit-name?name='+ name,true);
+    request.send(null);
 };
