@@ -102,6 +102,17 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
+var names=[];
+app.get('/submit-name',function(req,res){//url: submit-name?namexxxx this is query part so we can extract it like
+    //get the names from request
+    var name=req.query.name;
+    names.push(name);
+    //jason :
+    res.send(JSON.stringify(names));
+    
+});
+
+
 app.get('/:articlename', function (req, res) {
     var articlename=req.params.articlename;
   res.send(CreateTemplate(articles[articlename]));
@@ -121,15 +132,7 @@ app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
 
-var names=[];
-app.get('/submit-name',function(req,res){//url: submit-name?namexxxx this is query part so we can extract it like
-    //get the names from request
-    var name=req.query.name;
-    names.push(name);
-    //jason :
-    res.send(JSON.stringify(names));
-    
-});
+
 
 
 var port = 8080; // Use 8080 for local development because you might already have apache running on 80
