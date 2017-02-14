@@ -53,9 +53,9 @@ submit.onclick = function(){
   
   
   //capture the list and update
-  var names=['name1','name2','name3','name4'];
+  var names=['name1', 'name2', 'name3', 'name4'];
   var list='';
-  for(var i=0;i<names.list;i++){
+  for(var i=0; i<names.length ; i++){
       list += '<li>'+names+'</li>';
   }
   var ul=document.getElementById('namelist');
