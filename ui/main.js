@@ -33,7 +33,7 @@ request.onreadystatechange=function(){
   {
       if(request.readystate===200)
       {
-            var counter=request.responseText();
+            var counter=request.responseText;
             var span=document.getElementById('counts');
             span.innerHTML=counter.toString();   
       }
