@@ -40,3 +40,24 @@ button.onclick = function(){
     request.open('GET','http://sakshee-19.imad.hasura-app.io/counter',true);
     request.send(null);
 };
+
+
+
+//Submit Button
+var nameInput=document.getElementById('name');
+var name=nameInput.value;
+var submit=document.getElementById('submit_btn');
+submit.onclick = function(){
+  
+  //make request to the server send the name
+  
+  
+  //capture the list and update
+  var names=['name1','name2','name3'];
+  var list='';
+  for(var i=0;i<names.list;i++){
+      list += '<li>'+names+'</li>';
+  }
+  var ul=document.getElementById('namelist');
+  ul.innerHTML=list;
+};
