@@ -56,7 +56,7 @@ var articles={
                 this is article three !!!!!!!!!!!!!!!!!!!!!!!!
             </p> `
     }
-}
+};
 function CreateTemplate(data){
     
     var date=data.date;
