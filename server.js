@@ -122,9 +122,9 @@ app.get('/ui/madi.png', function (req, res) {
 });
 
 var names=[];
-app.get('/submit-name/:name',function(req,res){
+app.get('/submit-name',function(req,res){//url: submit-name?namexxxx this is query part so we can extract it like
     //get the names from request
-    var name=req.params.name;
+    var name=req.query.name;
     names.push(name);
     //jason :
     res.send(JSON.stringify(names));
