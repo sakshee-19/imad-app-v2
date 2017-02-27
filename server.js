@@ -25,7 +25,7 @@ app.get('/counter',function(req,res){
 
 
 
-
+/*static data
 var articles={
     'article-one': {
         title:'Article One |sakshee jain',
@@ -67,9 +67,9 @@ var articles={
                 this is article three !!!!!!!!!!!!!!!!!!!!!!!!
             </p> `
     }
-};
+};*/
 
-
+//dynamic data using database
 var pool=new Pool(config);
 app.get('/test-db',function(req,res){
     //make a select request 
