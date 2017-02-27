@@ -141,6 +141,26 @@ app.get('/submit-name',function(req,res){//url: submit-name?namexxxx this is que
 });
 
 
+
+app.get('/articles/:articlename', function (req, res) {
+    
+    
+    pool.query("SELECT * FROM articles WHERE title= "+req.params.articlename,function(err,results) {
+        if(err){
+            res.status(500).send(err.toString());
+        } else{
+            if(results.rows.length===0){
+                res.status(404).send('Not found any data');
+            }else{
+                var articleData=results.rows[0];
+                res.send(CreateTemplate(articleData));
+            }
+        }
+    });
+  
+});
+
+
 app.get('/:articlename', function (req, res) {
     var articlename=req.params.articlename;
   res.send(CreateTemplate(articles[articlename]));
