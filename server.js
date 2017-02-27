@@ -142,6 +142,8 @@ app.get('/submit-name',function(req,res){//url: submit-name?namexxxx this is que
 
 
 
+
+//to run server extracting content from database
 app.get('/articles/:articlename', function (req, res) {
     
     
