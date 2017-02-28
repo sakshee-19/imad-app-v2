@@ -2,6 +2,8 @@ var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
 var Pool=require('pg').Pool;
+var crypto=require('crypto');
+
 
 var config={
     user: 'sakshee-19',
@@ -130,6 +132,19 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
+//function hash
+function hash(input,salt){
+    //how to create hash
+    var hashed=crypto.pbkdf2(input,salt,10000,512,'sha512');
+    return hashed.toString('hex');
+}
+
+
+//hash input
+app.get('/hash/:input',function(req,res){
+   var hashedString=hash(req.param.input,'this-is-some-random-string');
+   res.send(hashedString);
+});
 var names=[];
 app.get('/submit-name',function(req,res){//url: submit-name?namexxxx this is query part so we can extract it like
     //get the names from request
