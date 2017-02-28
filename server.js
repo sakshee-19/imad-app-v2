@@ -145,6 +145,8 @@ app.get('/hash/:input',function(req,res){
    var hashedString=hash(req.params.input,'this-is-some-random-string');
    res.send(hashedString);
 });
+
+
 var names=[];
 app.get('/submit-name',function(req,res){//url: submit-name?namexxxx this is query part so we can extract it like
     //get the names from request
@@ -154,6 +156,7 @@ app.get('/submit-name',function(req,res){//url: submit-name?namexxxx this is que
     res.send(JSON.stringify(names));
     
 });
+
 
 
 
