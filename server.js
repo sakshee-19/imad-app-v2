@@ -146,6 +146,19 @@ app.get('/hash/:input',function(req,res){
    res.send(hashedString);
 });
 
+app.get('/create-user/',function(req,res){
+    
+    var salt=crypto.getRandomBytes(128).toString('hex');
+    var dpString=hash(password,salt);
+    pool.query('INSERT INTO "user" (username,password) VALUES ($1,$2)',[username,dpString],function(err,results){
+        if(err){
+            res.status(500).send(err.toString());
+        }else{
+            res.send('user successfully created: '+username);
+        }     
+    });
+});
+
 
 var names=[];
 app.get('/submit-name',function(req,res){//url: submit-name?namexxxx this is query part so we can extract it like
