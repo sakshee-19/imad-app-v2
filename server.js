@@ -25,8 +25,6 @@ app.get('/counter',function(req,res){
   res.send(counter.toString());
 });
 
-
-
 /*static data
 var articles={
     'article-one': {
@@ -194,7 +192,6 @@ app.get('/articles/:articlename', function (req, res) {
     });
   
 });
-
 
 app.get('/:articlename', function (req, res) {
     var articlename=req.params.articlename;
