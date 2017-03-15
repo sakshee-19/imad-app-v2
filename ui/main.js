@@ -58,7 +58,7 @@ submit.onclick = function(){
             //do some actions
               if(request.status===200)
                 {
-                        //capture the list and update
+                    /*    //capture the list and update
                       var names=request.responseText;
                       names=JSON.parse(names);
                       var list='';
@@ -66,7 +66,12 @@ submit.onclick = function(){
                           list += '<li>'+names[i]+'</li>';
                       }
                       var ul=document.getElementById('namelist');
-                      ul.innerHTML=list; 
+                      ul.innerHTML=list;*/
+                      alert('user logged in successfully');
+                }else if(request.status===403){
+                    alert('invalide username/password');
+                }else if(request.status===500){
+                    alert('some error occured with the server');
                 }
         }
      };
@@ -76,7 +81,9 @@ submit.onclick = function(){
      var password=document.getElementById('password').value;
      console.log('username');
      console.log('password');
-     request.open('POST','http://sakshee-19.imad.hasura-app.io/submit-name?name='+ name,true);
+      request.open('POST','http://sakshee-19.imad.hasura-app.io/login',true);
+    // request.open('GET','http://sakshee-19.imad.hasura-app.io/submit-name?name='+ name,true);
      //request.send(null);
+     request.setRequestHeader('Content-Type','application/json');
      request.send(JSON.stringify({username: username ,password: password}));
 };
