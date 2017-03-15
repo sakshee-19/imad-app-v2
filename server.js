@@ -68,6 +68,7 @@ var articles={
 };*/
 
 //dynamic data using database
+
 var pool=new Pool(config);
 app.get('/test-db',function(req,res){
     //make a select request 
@@ -151,7 +152,7 @@ app.post('/create-user',function(req,res){
     
     var salt=crypto.randomBytes(128).toString('hex');
     var dbString=hash(password,salt);
-    pool.query('INSERT INTO "user" (username,password) VALUES ($1,$2)',[username,dbString], function (err,results){
+    pool.query('INSERT INTO "user" (username,password) VALUES ($1,$2)',[username,dbString], function (err,res){
         if(err){
             res.status(500).send(err.toString());
         }
