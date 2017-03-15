@@ -152,7 +152,7 @@ app.post('/create-user',function(req,res){
     
     var salt=crypto.randomBytes(128).toString('hex');
     var dbString=hash(password,salt);
-    pool.query('INSERT INTO "user" (username,password) VALUES ($1,$2)',[username,dbString], function (err){
+    pool.query('INSERT INTO "user" (username,password) VALUES ($1,$2)',[username,dbString], function (err,result){
         if(err){
             res.status(500).send(err.toString());
         }
@@ -174,8 +174,6 @@ app.get('/submit-name',function(req,res){//url: submit-name?namexxxx this is que
 
 //to run server extracting content from database
 app.get('/articles/:articlename', function (req, res) {
-    
-    
     pool.query("SELECT * FROM articles WHERE title= $1",[req.params.articlename],function(err,results) {
         if(err){
             res.status(500).send(err.toString());
