@@ -139,14 +139,14 @@ function hash(input,salt){
 
 //hash input
 app.get('/hash/:input',function(req,res){
-   var hashedString=hash(req.params.input,'this-is-some-random-string');
+   var hashedString=hash(req.params.input,'this-is-some-random-string'); 
    res.send(hashedString);
 });
 
 app.post('/create-user',function(req,res){
     //username
     //password
-    //json request
+    //json request 
     var username=req.body.username;
     var password=req.body.password;
     
@@ -158,6 +158,34 @@ app.post('/create-user',function(req,res){
         }
         else{
             res.send('user successfully created: ' + username);
+        }     
+    });
+});
+
+app.post('/login',function(req,res){
+    var username=req.body.username;
+    var password=req.body.password;
+    
+    pool.query('SELECT * FROM "user" WHERE username= $1',[username], function (err,result){
+        if(err){
+            res.status(500).send(err.toString());
+        }
+        else{
+            if(result.rows.length===0)
+            {
+                res.status(404).send('Invalid usernae/password');
+            }else{
+                var dbstring=result.rows[0].password;
+                var salt=dbstring.split('$')[2];
+                var hpassword=hash(password,salt);
+                if(hpassword===dbstring)
+                {
+                    res.send('correct credential');
+                }
+                else{
+                    res.send('Invalid username/Password');
+                }
+            }
         }     
     });
 });
