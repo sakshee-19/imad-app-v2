@@ -74,6 +74,8 @@ submit.onclick = function(){
      //var name=nameInput.value;
      var username=document.getElementById('username').value;
      var password=document.getElementById('password').value;
+     console.log('username');
+     console.log('password');
      request.open('POST','http://sakshee-19.imad.hasura-app.io/submit-name?name='+ name,true);
      //request.send(null);
      request.send(JSON.stringify({username: username ,password: password}));
