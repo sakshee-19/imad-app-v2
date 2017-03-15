@@ -4,6 +4,7 @@ var path = require('path');
 var Pool=require('pg').Pool;
 var crypto=require('crypto');
 var bodyParser=require('body-parser');
+var session=require('express-session');
 
 var config={
     user: 'sakshee-19',
@@ -16,6 +17,10 @@ var config={
 var app = express();
 app.use(morgan('combined'));
 app.use(bodyParser.json());
+app.use(session({
+    secret: 'somerandomSecretValue',
+    cookie: {maxAge:60*1000*60*24*30 }
+}));
 
 var counter=0;
 app.get('/counter',function(req,res){
@@ -179,6 +184,13 @@ app.post('/login',function(req,res){
                 var salt=dbstring.split('$')[2];
                 var hpassword=hash(password,salt);
                 if(hpassword===dbstring){
+                    //set the session
+                    req.session.auth={userId: result.rows[0].id};
+                    //set cookie with session id
+                    //internally onserver side, it maps sessionid with object
+                    // auth:{userid}
+                    
+                    
                     res.send('correct credential');
                 }
                 else{
@@ -187,6 +199,10 @@ app.post('/login',function(req,res){
             }
         }     
     });
+});
+
+app.get('/check-login',function(req,res){
+    
 });
 
 var names=[];
