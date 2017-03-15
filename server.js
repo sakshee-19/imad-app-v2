@@ -173,7 +173,7 @@ app.post('/login',function(req,res){
         else{
             if(result.rows.length===0)
             {
-                res.status(404).send('Invalid usernae/password');
+                res.status(403).send('Invalid usernae/password');
             }else{
                 var dbstring=result.rows[0].password;
                 var salt=dbstring.split('$')[2];
