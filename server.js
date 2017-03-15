@@ -211,6 +211,9 @@ app.get('/check-login',function(req,res){
     }
 });
 
+app.get('/logout',function(req,res){
+   delete req.session.auth; 
+});
 var names=[];
 app.get('/submit-name',function(req,res){//url: submit-name?namexxxx this is query part so we can extract it like
     //get the names from request
